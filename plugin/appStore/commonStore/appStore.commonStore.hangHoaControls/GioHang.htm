@@ -1,0 +1,92 @@
+﻿<div id="LeenaCont" class="Q_n_A_page">
+	<div class="LeenaWrap">
+		<div class="page_wrap clearfix">
+		    <h1 class="page_title">Shopping cart</h1>
+            <div class="cart">
+                <div class="cart-top"></div>
+                <div class="cart-body">
+                    <div class="cart-box">
+                    </div>
+                    <div class="cart-ship" style="display: none;">
+                        <span class="cart-ship-gia">5.000đ</span>
+                        <span class="cart-ship-label">Phí vận chuyển</span><br />
+                        <span class="cart-ship-info">Dưới 80k, quý khách vui lòng phụ thêm 5k vận chuyển</span>
+                    </div>
+                    <div class="cart-tong">
+                        [cart.label.total] <span class="cart-tong-label"></span>
+                    </div>
+                    <div class="cart-task">
+                        <a href="javascript:;" class="btn_checkoutBtn checkoutBtn">
+                            [cart.label.checkOutBtn]    
+                        </a>
+                        <a href="/" class="btn_continue">
+                            [cart.label.continue]    
+                        </a>
+                    </div>
+                    <div class="cart-info">
+                        <table style="width:100%;" cellpadding="4" cellspacing="4">
+                            <tr>
+                                <td valign="top" class="td-header">[cart.label.info.name]</td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <input class="input-small Ten" value="{0}" placeholder="[cart.label.info.placeHolder.name]" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" class="td-header">[cart.label.info.e-mail]</td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <input class="input-small Email" value="{1}" placeholder="[cart.label.info.placeHolder.e-mail]" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" class="td-header">[cart.label.info.mobile]</td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <input class="input-small Mobile" value="{2}" placeholder="[cart.label.info.placeHolder.mobile]" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" class="td-header">[cart.label.info.address]</td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <input class="input-small DiaChi" value="{3}"  placeholder="[cart.label.info.placeHolder.address]"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <textarea class="textarea-tiny GhiChu" placeholder="[cart.label.info.placeHolder.GhiChu]" ></textarea>
+                                </td>                                                                                
+                            </tr>
+                            <tr>
+                                <td colspan="2" valign="top">
+                                    <a href="javascript:;" class="cart-send">[cart.label.info.send]</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>  
+                    <div class="cart-payment" data-tygia="{4}">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                            <input type="hidden" name="cmd" value="_xclick" />
+                            <input type="hidden" name="business" value="[cart.label.payment.paypalAccount]" />
+                            <h3>[cart.label.payment.title]</h3><br/>
+                            <p>[cart.label.payment.subtitle]</p><br/>
+                            <input type="hidden" name="item_name" value="[cart.label.payment.paypalDisplay]" />
+                            <input type="hidden" name="amount" value="20.00" /> 
+                            <input type="hidden" name="return" value="" /> 
+                            <input type="hidden" name="order_id" value="" /> 
+                            <input type="submit" value="[cart.label.payment.label]" />
+                        </form>
+                    </div>                
+                </div>    
+            </div>
+		</div>
+	</div>
+</div>
+
+
+    
