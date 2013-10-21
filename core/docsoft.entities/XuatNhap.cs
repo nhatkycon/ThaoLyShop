@@ -450,18 +450,37 @@ namespace docsoft.entities
 
         public static XuatNhap SelectTvDv(Guid TVDV_ID)
         {
-            var Item = new XuatNhap();
+            return SelectTvDv(DAL.con(), TVDV_ID);
+        }
+        public static XuatNhap SelectTvDv(SqlConnection con, Guid TVDV_ID)
+        {
+            var item = new XuatNhap();
             var obj = new SqlParameter[1];
             obj[0] = new SqlParameter("TVDV_ID", TVDV_ID);
             using (IDataReader rd = SqlHelper.ExecuteReader(DAL.con(), CommandType.StoredProcedure, "sp_tblXuatNhap_Select_SelectByTvDvId_linhnx", obj))
             {
                 while (rd.Read())
                 {
-                    Item = getFromReader(rd);
+                    item = getFromReader(rd);
                 }
             }
-            return Item;
+            return item;
         }
+        public static XuatNhapCollection SelectTvDv(SqlConnection con, string TVDV_ID)
+        {
+            var list = new XuatNhapCollection();
+            var obj = new SqlParameter[1];
+            obj[0] = new SqlParameter("TVDV_ID", TVDV_ID);
+            using (IDataReader rd = SqlHelper.ExecuteReader(DAL.con(), CommandType.StoredProcedure, "sp_tblXuatNhap_Select_SelectByTvDvId_linhnx", obj))
+            {
+                while (rd.Read())
+                {
+                    list.Add(getFromReader(rd));
+                }
+            }
+            return list;
+        }
+
         #endregion
     }
     #endregion

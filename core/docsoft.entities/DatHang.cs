@@ -15,21 +15,31 @@ public class DatHang : BaseEntity
     #region Properties
     public Guid ID { get; set; }
     public String KH_Ten { get; set; }
+    public String Ma { get; set; }
     public String KH_Email { get; set; }
     public String KH_Mobile { get; set; }
     public String KH_DiaChi { get; set; }
     public Guid KH_ID { get; set; }
+    public String KH_Facebook { get; set; }
+    public String Facebook { get; set; }
     public Int32 GiaTri { get; set; }
     public Int32 PhiVanChuyen { get; set; }
     public Int32 Tong { get; set; }
     public Boolean GiaoHang { get; set; }
     public DateTime NgayGiao { get; set; }
-    public Boolean Readed { get; set; }
     public DateTime NgayTao { get; set; }
     public Boolean ThanhToan { get; set; }
     public String UPS_Code { get; set; }
     public String PaypalTx { get; set; }
-    public string Username { get; set; }
+    public String Username { get; set; }
+    public DateTime NgayDat { get; set; }
+    public Guid TT_ID { get; set; }
+    public Guid NguonGoc_ID { get; set; }
+    public Boolean Readed { get; set; }
+    public String FacebookUrl { get; set; }
+    public String GhiChu { get; set; }
+    public Int32 UuTien { get; set; }
+    public DateTime NgayGiaoYeuCau { get; set; }
     #endregion
     #region Contructor
     public DatHang()
@@ -37,6 +47,8 @@ public class DatHang : BaseEntity
     #endregion
     #region Customs properties
 
+    public string TT_Ten { get; set; }
+    public string NguonGoc_Ten { get; set; }
     #endregion
     public override BaseEntity getFromReader(IDataReader rd)
     {
@@ -63,38 +75,63 @@ public class DatHangDal
     public static DatHang Insert(DatHang item)
     {
         var Item = new DatHang();
-        var obj = new SqlParameter[17];
+        var obj = new SqlParameter[27];
         obj[0] = new SqlParameter("DH_ID", item.ID);
-        obj[1] = new SqlParameter("DH_KH_Ten", item.KH_Ten);
-        obj[2] = new SqlParameter("DH_KH_Email", item.KH_Email);
-        obj[3] = new SqlParameter("DH_KH_Mobile", item.KH_Mobile);
-        obj[4] = new SqlParameter("DH_KH_DiaChi", item.KH_DiaChi);
-        obj[5] = new SqlParameter("DH_KH_ID", item.KH_ID);
-        obj[6] = new SqlParameter("DH_GiaTri", item.GiaTri);
-        obj[7] = new SqlParameter("DH_PhiVanChuyen", item.PhiVanChuyen);
-        obj[8] = new SqlParameter("DH_Tong", item.Tong);
-        obj[9] = new SqlParameter("DH_GiaoHang", item.GiaoHang);
+        obj[1] = new SqlParameter("DH_Ma", item.Ma);
+        obj[2] = new SqlParameter("DH_KH_Ten", item.KH_Ten);
+        obj[3] = new SqlParameter("DH_KH_Email", item.KH_Email);
+        obj[4] = new SqlParameter("DH_KH_Mobile", item.KH_Mobile);
+        obj[5] = new SqlParameter("DH_KH_DiaChi", item.KH_DiaChi);
+        obj[6] = new SqlParameter("DH_KH_ID", item.KH_ID);
+        obj[7] = new SqlParameter("DH_KH_Facebook", item.KH_Facebook);
+        obj[8] = new SqlParameter("DH_Facebook", item.Facebook);
+        obj[9] = new SqlParameter("DH_GiaTri", item.GiaTri);
+        obj[10] = new SqlParameter("DH_PhiVanChuyen", item.PhiVanChuyen);
+        obj[11] = new SqlParameter("DH_Tong", item.Tong);
+        obj[12] = new SqlParameter("DH_GiaoHang", item.GiaoHang);
         if (item.NgayGiao > DateTime.MinValue)
         {
-            obj[10] = new SqlParameter("DH_NgayGiao", item.NgayGiao);
+            obj[13] = new SqlParameter("DH_NgayGiao", item.NgayGiao);
         }
         else
         {
-            obj[10] = new SqlParameter("DH_NgayGiao", DBNull.Value);
+            obj[13] = new SqlParameter("DH_NgayGiao", DBNull.Value);
         }
-        obj[11] = new SqlParameter("DH_Readed", item.Readed);
         if (item.NgayTao > DateTime.MinValue)
         {
-            obj[12] = new SqlParameter("DH_NgayTao", item.NgayTao);
+            obj[14] = new SqlParameter("DH_NgayTao", item.NgayTao);
         }
         else
         {
-            obj[12] = new SqlParameter("DH_NgayTao", DBNull.Value);
+            obj[14] = new SqlParameter("DH_NgayTao", DBNull.Value);
         }
-        obj[13] = new SqlParameter("DH_ThanhToan", item.ThanhToan);
-        obj[14] = new SqlParameter("DH_UPS_Code", item.UPS_Code);
-        obj[15] = new SqlParameter("DH_PaypalTx", item.PaypalTx);
-        obj[16] = new SqlParameter("DH_Username", item.Username);
+        obj[15] = new SqlParameter("DH_ThanhToan", item.ThanhToan);
+        obj[16] = new SqlParameter("DH_UPS_Code", item.UPS_Code);
+        obj[17] = new SqlParameter("DH_PaypalTx", item.PaypalTx);
+        obj[18] = new SqlParameter("DH_Username", item.Username);
+        if (item.NgayDat > DateTime.MinValue)
+        {
+            obj[19] = new SqlParameter("DH_NgayDat", item.NgayDat);
+        }
+        else
+        {
+            obj[19] = new SqlParameter("DH_NgayDat", DBNull.Value);
+        }
+        obj[20] = new SqlParameter("DH_TT_ID", item.TT_ID);
+        obj[21] = new SqlParameter("DH_NguonGoc_ID", item.NguonGoc_ID);
+        obj[22] = new SqlParameter("DH_Readed", item.Readed);
+        obj[23] = new SqlParameter("DH_FacebookUrl", item.FacebookUrl);
+        obj[24] = new SqlParameter("DH_GhiChu", item.GhiChu);
+        obj[25] = new SqlParameter("DH_UuTien", item.UuTien);
+        if (item.NgayGiaoYeuCau > DateTime.MinValue)
+        {
+            obj[26] = new SqlParameter("DH_NgayGiaoYeuCau", item.NgayGiaoYeuCau);
+        }
+        else
+        {
+            obj[26] = new SqlParameter("DH_NgayGiaoYeuCau", DBNull.Value);
+        }
+
         using (IDataReader rd = SqlHelper.ExecuteReader(DAL.con(), CommandType.StoredProcedure, "sp_tblDatHang_Insert_InsertNormal_linhnx", obj))
         {
             while (rd.Read())
@@ -108,38 +145,63 @@ public class DatHangDal
     public static DatHang Update(DatHang item)
     {
         var Item = new DatHang();
-        var obj = new SqlParameter[17];
+        var obj = new SqlParameter[27];
         obj[0] = new SqlParameter("DH_ID", item.ID);
-        obj[1] = new SqlParameter("DH_KH_Ten", item.KH_Ten);
-        obj[2] = new SqlParameter("DH_KH_Email", item.KH_Email);
-        obj[3] = new SqlParameter("DH_KH_Mobile", item.KH_Mobile);
-        obj[4] = new SqlParameter("DH_KH_DiaChi", item.KH_DiaChi);
-        obj[5] = new SqlParameter("DH_KH_ID", item.KH_ID);
-        obj[6] = new SqlParameter("DH_GiaTri", item.GiaTri);
-        obj[7] = new SqlParameter("DH_PhiVanChuyen", item.PhiVanChuyen);
-        obj[8] = new SqlParameter("DH_Tong", item.Tong);
-        obj[9] = new SqlParameter("DH_GiaoHang", item.GiaoHang);
+        obj[1] = new SqlParameter("DH_Ma", item.Ma);
+        obj[2] = new SqlParameter("DH_KH_Ten", item.KH_Ten);
+        obj[3] = new SqlParameter("DH_KH_Email", item.KH_Email);
+        obj[4] = new SqlParameter("DH_KH_Mobile", item.KH_Mobile);
+        obj[5] = new SqlParameter("DH_KH_DiaChi", item.KH_DiaChi);
+        obj[6] = new SqlParameter("DH_KH_ID", item.KH_ID);
+        obj[7] = new SqlParameter("DH_KH_Facebook", item.KH_Facebook);
+        obj[8] = new SqlParameter("DH_Facebook", item.Facebook);
+        obj[9] = new SqlParameter("DH_GiaTri", item.GiaTri);
+        obj[10] = new SqlParameter("DH_PhiVanChuyen", item.PhiVanChuyen);
+        obj[11] = new SqlParameter("DH_Tong", item.Tong);
+        obj[12] = new SqlParameter("DH_GiaoHang", item.GiaoHang);
         if (item.NgayGiao > DateTime.MinValue)
         {
-            obj[10] = new SqlParameter("DH_NgayGiao", item.NgayGiao);
+            obj[13] = new SqlParameter("DH_NgayGiao", item.NgayGiao);
         }
         else
         {
-            obj[10] = new SqlParameter("DH_NgayGiao", DBNull.Value);
+            obj[13] = new SqlParameter("DH_NgayGiao", DBNull.Value);
         }
-        obj[11] = new SqlParameter("DH_Readed", item.Readed);
         if (item.NgayTao > DateTime.MinValue)
         {
-            obj[12] = new SqlParameter("DH_NgayTao", item.NgayTao);
+            obj[14] = new SqlParameter("DH_NgayTao", item.NgayTao);
         }
         else
         {
-            obj[12] = new SqlParameter("DH_NgayTao", DBNull.Value);
+            obj[14] = new SqlParameter("DH_NgayTao", DBNull.Value);
         }
-        obj[13] = new SqlParameter("DH_ThanhToan", item.ThanhToan);
-        obj[14] = new SqlParameter("DH_UPS_Code", item.UPS_Code);
-        obj[15] = new SqlParameter("DH_PaypalTx", item.PaypalTx);
-        obj[16] = new SqlParameter("DH_Username", item.Username);
+        obj[15] = new SqlParameter("DH_ThanhToan", item.ThanhToan);
+        obj[16] = new SqlParameter("DH_UPS_Code", item.UPS_Code);
+        obj[17] = new SqlParameter("DH_PaypalTx", item.PaypalTx);
+        obj[18] = new SqlParameter("DH_Username", item.Username);
+        if (item.NgayDat > DateTime.MinValue)
+        {
+            obj[19] = new SqlParameter("DH_NgayDat", item.NgayDat);
+        }
+        else
+        {
+            obj[19] = new SqlParameter("DH_NgayDat", DBNull.Value);
+        }
+        obj[20] = new SqlParameter("DH_TT_ID", item.TT_ID);
+        obj[21] = new SqlParameter("DH_NguonGoc_ID", item.NguonGoc_ID);
+        obj[22] = new SqlParameter("DH_Readed", item.Readed);
+        obj[23] = new SqlParameter("DH_FacebookUrl", item.FacebookUrl);
+        obj[24] = new SqlParameter("DH_GhiChu", item.GhiChu);
+        obj[25] = new SqlParameter("DH_UuTien", item.UuTien);
+        if (item.NgayGiaoYeuCau > DateTime.MinValue)
+        {
+            obj[26] = new SqlParameter("DH_NgayGiaoYeuCau", item.NgayGiaoYeuCau);
+        }
+        else
+        {
+            obj[26] = new SqlParameter("DH_NgayGiaoYeuCau", DBNull.Value);
+        }
+
         using (IDataReader rd = SqlHelper.ExecuteReader(DAL.con(), CommandType.StoredProcedure, "sp_tblDatHang_Update_UpdateNormal_linhnx", obj))
         {
             while (rd.Read())
@@ -179,9 +241,14 @@ public class DatHangDal
     }
     public static Pager<DatHang> pagerNormal(string url, bool rewrite, string sort, string q, int size)
     {
-        var obj = new SqlParameter[1];
+        return pagerNormal(DAL.con(), url, rewrite, sort, q, size);
+    }
+    public static Pager<DatHang> pagerNormal(SqlConnection con, string url, bool rewrite, string sort, string q, int size)
+    {
+        var obj = new SqlParameter[2];
         obj[0] = new SqlParameter("Sort", sort);
-        var pg = new Pager<DatHang>("sp_tblDatHang_Pager_Normal_linhnx", "page", size, 10, rewrite, url, obj);
+        obj[1] = new SqlParameter("q", q);
+        var pg = new Pager<DatHang>(con, "sp_tblDatHang_Pager_Normal_linhnx", "page", size, 10, rewrite, url, obj);
         return pg;
     }
     #endregion
@@ -193,6 +260,10 @@ public class DatHangDal
         if (rd.FieldExists("DH_ID"))
         {
             Item.ID = (Guid)(rd["DH_ID"]);
+        }
+        if (rd.FieldExists("DH_Ma"))
+        {
+            Item.Ma = (String)(rd["DH_Ma"]);
         }
         if (rd.FieldExists("DH_KH_Ten"))
         {
@@ -214,6 +285,14 @@ public class DatHangDal
         {
             Item.KH_ID = (Guid)(rd["DH_KH_ID"]);
         }
+        if (rd.FieldExists("DH_KH_Facebook"))
+        {
+            Item.KH_Facebook = (String)(rd["DH_KH_Facebook"]);
+        }
+        if (rd.FieldExists("DH_Facebook"))
+        {
+            Item.Facebook = (String)(rd["DH_Facebook"]);
+        }
         if (rd.FieldExists("DH_GiaTri"))
         {
             Item.GiaTri = (Int32)(rd["DH_GiaTri"]);
@@ -234,10 +313,6 @@ public class DatHangDal
         {
             Item.NgayGiao = (DateTime)(rd["DH_NgayGiao"]);
         }
-        if (rd.FieldExists("DH_Readed"))
-        {
-            Item.Readed = (Boolean)(rd["DH_Readed"]);
-        }
         if (rd.FieldExists("DH_NgayTao"))
         {
             Item.NgayTao = (DateTime)(rd["DH_NgayTao"]);
@@ -257,6 +332,47 @@ public class DatHangDal
         if (rd.FieldExists("DH_Username"))
         {
             Item.Username = (String)(rd["DH_Username"]);
+        }
+        if (rd.FieldExists("DH_NgayDat"))
+        {
+            Item.NgayDat = (DateTime)(rd["DH_NgayDat"]);
+        }
+        if (rd.FieldExists("DH_TT_ID"))
+        {
+            Item.TT_ID = (Guid)(rd["DH_TT_ID"]);
+        }
+        if (rd.FieldExists("DH_NguonGoc_ID"))
+        {
+            Item.NguonGoc_ID = (Guid)(rd["DH_NguonGoc_ID"]);
+        }
+        if (rd.FieldExists("DH_Readed"))
+        {
+            Item.Readed = (Boolean)(rd["DH_Readed"]);
+        }
+        if (rd.FieldExists("DH_FacebookUrl"))
+        {
+            Item.FacebookUrl = (String)(rd["DH_FacebookUrl"]);
+        }
+        if (rd.FieldExists("DH_GhiChu"))
+        {
+            Item.GhiChu = (String)(rd["DH_GhiChu"]);
+        }
+        if (rd.FieldExists("DH_UuTien"))
+        {
+            Item.UuTien = (Int32)(rd["DH_UuTien"]);
+        }
+        if (rd.FieldExists("DH_NgayGiaoYeuCau"))
+        {
+            Item.NgayGiaoYeuCau = (DateTime)(rd["DH_NgayGiaoYeuCau"]);
+        }
+
+        if (rd.FieldExists("TT_Ten"))
+        {
+            Item.TT_Ten = (String)(rd["TT_Ten"]);
+        }
+        if (rd.FieldExists("NguonGoc_Ten"))
+        {
+            Item.NguonGoc_Ten = (String)(rd["NguonGoc_Ten"]);
         }
         return Item;
     }
@@ -283,6 +399,21 @@ public class DatHangDal
         obj[0] = new SqlParameter("Username", Username);
         obj[1] = new SqlParameter("Top", Top);
         using (IDataReader rd = SqlHelper.ExecuteReader(con, CommandType.StoredProcedure, "sp_tblDatHang_Select_ByUsername_linhnx", obj))
+        {
+            while (rd.Read())
+            {
+                List.Add(getFromReader(rd));
+            }
+        }
+        return List;
+    }
+    public static DatHangCollection SelectByKhId(SqlConnection con, string KhId, int Top)
+    {
+        var List = new DatHangCollection();
+        var obj = new SqlParameter[2];
+        obj[0] = new SqlParameter("KH_ID", KhId);
+        obj[1] = new SqlParameter("Top", Top);
+        using (IDataReader rd = SqlHelper.ExecuteReader(con, CommandType.StoredProcedure, "sp_tblDatHang_Select_SelectByKhId_linhnx", obj))
         {
             while (rd.Read())
             {

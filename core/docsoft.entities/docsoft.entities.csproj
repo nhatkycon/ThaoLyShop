@@ -51,6 +51,8 @@
     <Compile Include="Album.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Aq.cs" />
+    <Compile Include="ChamSoc.cs" />
+    <Compile Include="Shipping.cs" />
     <Compile Include="PhotoReview.cs" />
     <Compile Include="YeuCauDoiHang.cs" />
     <Compile Include="YeuThich.cs" />

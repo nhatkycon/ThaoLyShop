@@ -218,17 +218,7 @@ namespace docsoft.entities
 
         public static HangHoa SelectById(Guid HH_ID)
         {
-            var Item = new HangHoa();
-            var obj = new SqlParameter[1];
-            obj[0] = new SqlParameter("HH_ID", HH_ID);
-            using (IDataReader rd = SqlHelper.ExecuteReader(DAL.con(), CommandType.StoredProcedure, "sp_tblHangHoa_Select_SelectById_linhnx", obj))
-            {
-                while (rd.Read())
-                {
-                    Item = getFromReader(rd);
-                }
-            }
-            return Item;
+            return SelectById(DAL.con(),HH_ID);
         }
 
         public static HangHoaCollection SelectAll()
@@ -418,7 +408,25 @@ namespace docsoft.entities
         #endregion
 
         #region Extend
+        public static HangHoa SelectById(SqlConnection con, Guid HH_ID)
+        {
+            var Item = new HangHoa();
+            var obj = new SqlParameter[1];
+            obj[0] = new SqlParameter("HH_ID", HH_ID);
+            using (IDataReader rd = SqlHelper.ExecuteReader(con, CommandType.StoredProcedure, "sp_tblHangHoa_Select_SelectById_linhnx", obj))
+            {
+                while (rd.Read())
+                {
+                    Item = getFromReader(rd);
+                }
+            }
+            return Item;
+        }
         public static Pager<HangHoa> ByDm(string url, bool rewrite, string sort, string q, int size, string DM_ID)
+        {
+            return ByDm(DAL.con(), url, rewrite, sort, q, size, DM_ID);
+        }
+        public static Pager<HangHoa> ByDm(SqlConnection con, string url, bool rewrite, string sort, string q, int size, string DM_ID)
         {
             var obj = new SqlParameter[3];
             if (!string.IsNullOrEmpty(sort))
@@ -445,7 +453,7 @@ namespace docsoft.entities
             {
                 obj[2] = new SqlParameter("DM_ID", DBNull.Value);
             }
-            var pg = new Pager<HangHoa>("sp_tblHangHoa_Pager_ByDm_linhnx", "page", size, 10, rewrite, url, obj);
+            var pg = new Pager<HangHoa>(con, "sp_tblHangHoa_Pager_ByDm_linhnx", "page", size, 10, rewrite, url, obj);
             return pg;
         }
         public static Pager<HangHoa> ByDmMa(SqlConnection con, string url, bool rewrite, string sort, string q, int size, string DM_Ma)

@@ -9,6 +9,7 @@ html, body
     margin:0;
     padding:0;
     font-family: Tahoma;
+    overflow: visible;
 }
 a,a:hover
 {
@@ -375,4 +376,265 @@ a:hover.reg-save
 .zone-item-left
 {
     float:left;
+}
+
+.alert {
+    display: none;
+}
+.body {
+    margin: 10px;
+}
+.ModuleHeader a.btn {
+    margin-bottom: 10px
+}
+
+
+.table tbody tr > td.success {
+  background-color: #dff0d8 !important;
+}
+
+.table tbody tr > td.error {
+  background-color: #f2dede !important;
+}
+
+.table tbody tr > td.warning {
+  background-color: #fcf8e3 !important;
+}
+
+.table tbody tr > td.info {
+  background-color: #d9edf7 !important;
+}
+
+.table-hover tbody tr:hover > td.success {
+  background-color: #d0e9c6 !important;
+}
+
+.table-hover tbody tr:hover > td.error {
+  background-color: #ebcccc !important;
+}
+
+.table-hover tbody tr:hover > td.warning {
+  background-color: #faf2cc !important;
+}
+
+.table-hover tbody tr:hover > td.info {
+  background-color: #c4e3f3 !important;
+}
+.Anh-Item {
+    margin: 10px;    
+}
+
+ul,li,ol
+{
+    padding:0;
+    margin:0;
+    list-style-type:none;
+}
+.DanhSachHangHoaList
+{    
+    width:980px;
+    border-bottom:0px;    
+}
+
+.DanhSachHangHoaList li
+{
+    overflow:hidden;    
+    float:left;
+    width:100%;
+}
+.DanhSachHangHoaList li ul
+{
+    float:left;
+    width:200%;
+}
+.DanhSachHangHoaList li ul li
+{
+    float:left; 
+    width:auto;
+    border-bottom:0px;
+    border-right:solid 1px #ccc;
+    text-align:center;
+    padding:3px 5px;
+    min-height:20px;
+}
+.DanhSachHangHoaList .ds-item
+{
+    border:solid 1px #b2b2b2;
+    border-top:0px;
+    background-color:#FFF;
+}
+.DanhSachHangHoaList .ds-header
+{
+    font-weight:bold;
+    background-color:#F2F2F2;
+    border:solid 1px #b2b2b2;
+    -moz-border-radius: 5px 5px 0px 0px;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
+}
+.DanhSachHangHoaList .ds-item.thu
+{
+    border:solid 1px #b2b2b2;
+    border-top:0px;
+    color: #009933;
+}
+.DanhSachHangHoaList .ds-item.chi
+{
+    border:solid 1px #b2b2b2;
+    border-top:0px;
+    color: red;
+}
+.DanhSachHangHoaList .ds-footer
+{
+    font-weight:bold;
+    border:solid 1px #b2b2b2;
+    background-color:#FFF;
+    border-top:0px;
+    -moz-border-radius: 0px 0px 5px 5px;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    border-radius:  0px 0px 5px 5px;
+}
+.DanhSachHangHoaList .ds-footer input
+{
+    font-weight:bold;
+    color:Red;
+}
+.DanhSachHangHoaList .ds-item input
+{
+    float:left;
+    border:0px;
+    width:90%;
+    background-color:transparent;
+}
+#quanLyXuatNhapMdl-dlgNew .PhaiTra
+{
+    font-size:14pt;    
+    color:Red;
+}
+#quanLyXuatNhapMdl-dlgNew .ThanhToan
+{
+    font-size:14pt;    
+}
+#quanLyXuatNhapMdl-dlgNew .ConNo
+{
+    font-size:14pt;    
+}
+.DanhSachHangHoaList li ul li.item-Ten
+{
+    width:200px;
+}
+.DanhSachHangHoaList li ul li.item-DV_Ten
+{
+    width:80px;
+}
+.DanhSachHangHoaList li ul li.item-DonGia
+{
+    width:80px;
+    text-align:right;
+}
+.DanhSachHangHoaList li ul li.item-DonGia input
+{
+    text-align:right;
+}
+.DanhSachHangHoaList li ul li.item-SoLuong
+{
+    width:50px;
+}
+.DanhSachHangHoaList li ul li.item-SoLuong input
+{
+    text-align:right;
+}
+.DanhSachHangHoaList li ul li.item-Tong
+{
+    width:80px;
+    text-align:right;
+}
+.DanhSachHangHoaList li ul li.item-Tong input
+{
+    text-align:right;
+}
+.DanhSachHangHoaList li ul li.item-VAT
+{
+    width:40px;
+}
+.DanhSachHangHoaList li ul li.item-VATTien
+{
+    width:60px;
+}
+.DanhSachHangHoaList li ul li.item-CKTyLe
+{
+    width:40px;
+}
+.DanhSachHangHoaList li ul li.item-CKTien
+{
+    width:60px;
+}
+.DanhSachHangHoaList li ul li.item-CKTien input
+{
+    text-align:right;
+}
+.DanhSachHangHoaList li ul li.item-GhiChu
+{
+    width:60px;
+}
+.DanhSachHangHoaList li ul li.item-Kho
+{
+    width:100px;
+}
+.DanhSachHangHoaList li ul li.item-Xoa
+{
+    width:30px;
+}
+.DanhSachHangHoaList li ul li.item-ThuChi-Tien
+{
+    width:50px;
+    text-align: right;
+}
+.DanhSachHangHoaList li ul li.item-ThuChi-Ngay
+{
+    width:35px;
+}
+.DanhSachHangHoaList li ul li.item-ThuChi-Tm
+{
+    width:50px;
+    text-align: right;
+}
+.DanhSachHangHoaList li ul li.item-ThuChi-Tk
+{
+    width:50px;
+    text-align: right;
+}
+.DanhSachHangHoaList li ul li.bold
+{
+    font-weight: bold;
+}
+.DanhSachHangHoaList li ul li.item-ThuChi-Tong
+{
+    width:64px;
+    text-align: right;
+}
+.DanhSachHangHoaList li ul li.item-ThuChi-Ma
+{
+    width:60px;
+    text-align: right;
+    display: none;
+}
+
+.mobile-body-container .DanhSachHangHoaList
+{    
+    width:298px;
+    border-bottom:0px;
+    font-size: 9px;  
+}
+.DanhSachHangHoaList li ul li.item-ThuChi-Ma
+{
+    padding-top: 5px;
+}
+.DanhSachHangHoaList li ul li .thuChi-item-li-tien-lbl
+{
+    position: relative;    
+}
+.DanhSachHangHoaList li ul li .thuChi-item-li-tien-loai
+{
+    position: absolute;    
 }

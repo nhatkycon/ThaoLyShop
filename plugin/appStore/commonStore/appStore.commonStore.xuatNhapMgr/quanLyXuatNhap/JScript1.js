@@ -542,7 +542,115 @@
             }
         }
     },
-    add: function (_newDlg, fn, obj) {
+    editById: function (s) {
+        quanLyXuatNhapFn.loadHtml(function () {
+            var newDlg = $('#quanLyXuatNhapMdl-dlgNew');
+            $(newDlg).dialog({
+                title: 'Sửa',
+                width: 1010,
+                buttons: {
+                    'Lưu': function () {
+                        quanLyXuatNhapFn.save(false, function () {
+                            quanLyXuatNhapFn.clearform();
+                            quanLyXuatNhapFn.draff(function (dt) {
+                                newDlg.find('.ID').val(dt);
+                                newDlg.find('.ID').attr('draff', '1');
+                            });
+                        }, ''), {};
+                    },
+                    'Lưu và đóng': function () {
+                        quanLyXuatNhapFn.save(false, function () {
+                            quanLyXuatNhapFn.clearform();
+                            $(newDlg).dialog('close');
+                        }, '', {});
+                    },
+                    'In hóa đơn': function () {
+                        quanLyXuatNhapFn.createReport(s);
+                    },
+                    'In phiếu thu': function () {
+                        quanLyXuatNhapFn.createReport(s);
+                    },
+                    'Đóng': function () {
+                        $(newDlg).dialog('close');
+                    }
+                },
+                beforeClose: function () {
+                    quanLyXuatNhapFn.clearform();
+                },
+                open: function () {
+                    console.log(s);
+                    adm.loading('Đang nạp dữ liệu');
+                    adm.styleButton();
+                    quanLyXuatNhapFn.clearform();
+                    adm.regJPlugin(jQuery().formatCurrency, domain +'/lib/js/jquery.formatCurrency-1.4.0.min.js', function () {
+                    });
+                    $.ajax({
+                        url: quanLyXuatNhapFn.urlDefault().toString() + '&subAct=edit',
+                        dataType: 'script',
+                        data: {
+                            'ID': s
+                        },
+                        success: function (_dt) {
+                            adm.loading(null);
+                            var dt = eval(_dt);
+
+                            var ID = $('.ID', newDlg);
+                            ID.attr('draff', '0');
+                            var NgayHoaDon = $('.NgayHoaDon', newDlg);
+                            var Ma = $('.Ma', newDlg);
+                            var KH_ID = $('.KH_ID', newDlg);
+                            var DanhSachXuatNhapChiTiet = $('.DanhSachXuatNhapChiTiet', newDlg);
+                            var DanhSachXuatNhapChiTietFooter = DanhSachXuatNhapChiTiet.find('.ds-footer');
+                            var NhanVien = $('.NhanVien', newDlg);
+                            var CongTienHang = $('.CongTienHang', newDlg);
+                            var GhiChu = $('.GhiChu', newDlg);
+                            var TongVAT = $('.TongVAT', newDlg);
+                            var ChietKhau = $('.ChietKhau', newDlg);
+                            var ConNo = $('.ConNo', newDlg);
+                            var ThanhToan = $('.ThanhToan', newDlg);
+                            var HangHoa = $('.HangHoa', newDlg);
+                            var PhaiTra = $('.PhaiTra', newDlg);
+                            var KHO_ID = $('.KHO_ID', newDlg);
+                            var LoaiQuy = $('.LoaiQuy', newDlg);
+                            var TuVanVien = $('.TuVanVien', newDlg);
+
+                            ID.val(dt.ID);
+                            var value = new Date(dt.NgayHoaDon);
+
+                            NgayHoaDon.val(value.getDate() + "/" + (value.getMonth() + 1) + "/" + value.getFullYear());
+                            Ma.val(dt.Ma);
+
+                            KHO_ID.val(dt.KHO_Ten);
+                            KHO_ID.attr('_value', dt.KHO_ID);
+
+                            TuVanVien.val(dt.TuVanVien);
+                            KH_ID.val(dt.KH_Ten);
+                            KH_ID.attr('_value', dt.KH_ID);
+                            $.each(dt.XNCT, function (i, item) {
+                                var newItem = $('#xnct-hh-item').tmpl(item).insertBefore(DanhSachXuatNhapChiTietFooter);
+                                newItem.hide();
+                                newItem.fadeIn('slideDown');
+                                quanLyXuatNhapFn.XuatNhapChiTietItemFn(newItem);
+                                quanLyXuatNhapFn.recount();
+                                quanLyXuatNhapFn.updateXNCTItem(newItem);
+                            });
+                            LoaiQuy.val(dt._ThuChi.LoaiQuy);
+                            NhanVien.val(dt.NhanVien);
+                            CongTienHang.val(dt.CongTienHang);
+                            GhiChu.val(dt.GhiChu);
+                            TongVAT.val(dt.VAT);
+                            ChietKhau.val(dt.ChietKhau);
+                            ConNo.val(dt.ConNo);
+                            ThanhToan.val(dt.ThanhToan);
+                            PhaiTra.val(dt.PhaiTra);
+                            quanLyXuatNhapFn.popfn();
+                        }
+                    });
+                }
+            });
+        });
+    },
+    add: function (_newDlg, fn, obj, openFn) {
         quanLyXuatNhapFn.loadHtml(function () {
             var newDlg = $('#quanLyXuatNhapMdl-dlgNew');
             $(newDlg).dialog({
@@ -585,6 +693,9 @@
                     adm.styleButton();
                     quanLyXuatNhapFn.clearform();
                     quanLyXuatNhapFn.popfn(newDlg);
+                    if(typeof (openFn) == "function") {
+                        openFn(newDlg);
+                    }
                     quanLyXuatNhapFn.draff(function (_dt) {
                         var dt = eval(_dt);
                         var ID = newDlg.find('.ID');
@@ -849,7 +960,7 @@
         }
     },
     createReport: function (id) {
-        var request = document.location.href + quanLyXuatNhapFn.urlDefault().toString() + '&subAct=reports&ID=' + id;
+        var request = domain + '/lib/' + quanLyXuatNhapFn.urlDefault().toString() + '&subAct=reports&ID=' + id;
         var win = window.open(request, 'popup', 'width=1024, height=700');
         win.focus();
     },

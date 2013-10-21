@@ -34,6 +34,7 @@ namespace pmSpa.entities
         public String DiaChi { get; set; }
         public Guid KhuVuc_ID { get; set; }
         public DateTime NgayTao { get; set; }
+        public Guid NguoiGioiThieu { get; set; }
         public String NguoiTao { get; set; }
         public DateTime NgayCapNhat { get; set; }
         public String NguoiCapNhat { get; set; }
@@ -44,7 +45,6 @@ namespace pmSpa.entities
         public Boolean KhongNhanEmail { get; set; }
         public Boolean KhongDuocGoiDien { get; set; }
         public String ThoiGianGoiDien { get; set; }
-        public Guid NguoiGioiThieu { get; set; }
         public String Anh { get; set; }
         public String TuVanVien { get; set; }
         #endregion
@@ -239,17 +239,7 @@ namespace pmSpa.entities
 
         public static KhachHang SelectById(Guid KH_ID)
         {
-            var Item = new KhachHang();
-            var obj = new SqlParameter[1];
-            obj[0] = new SqlParameter("KH_ID", KH_ID);
-            using (IDataReader rd = SqlHelper.ExecuteReader(DAL.con(), CommandType.StoredProcedure, "sp_tblSpaMgr_KhachHang_Select_SelectById_linhnx", obj))
-            {
-                while (rd.Read())
-                {
-                    Item = getFromReader(rd);
-                }
-            }
-            return Item;
+            return SelectById(DAL.con(), KH_ID);
         }
 
         public static KhachHangCollection SelectAll()
@@ -502,6 +492,20 @@ namespace pmSpa.entities
         #endregion
 
         #region Extend
+        public static KhachHang SelectById(SqlConnection con, Guid KH_ID)
+        {
+            var Item = new KhachHang();
+            var obj = new SqlParameter[1];
+            obj[0] = new SqlParameter("KH_ID", KH_ID);
+            using (IDataReader rd = SqlHelper.ExecuteReader(con, CommandType.StoredProcedure, "sp_tblSpaMgr_KhachHang_Select_SelectById_linhnx", obj))
+            {
+                while (rd.Read())
+                {
+                    Item = getFromReader(rd);
+                }
+            }
+            return Item;
+        }
         public static Pager<KhachHang> pagerAll(string url, bool rewrite, string sort, string q, int size, string KhuVuc_ID, string NguonGoc_Id)
         {
             var obj = new SqlParameter[4];
@@ -639,7 +643,6 @@ namespace pmSpa.entities
             var pg = new Pager<KhachHang>("sp_tblSpaMgr_KhachHang_Pager_pagerDoanhSoTuNgayDenNgay_linhnx", "page", size, 10, rewrite, url, obj);
             return pg;
         }
-
         public static Pager<KhachHang> pagerSinhNhat(string url, bool rewrite, string sort, string q, int size, string KhuVuc_ID, string NguonGoc_ID)
         {
             var obj = new SqlParameter[4];

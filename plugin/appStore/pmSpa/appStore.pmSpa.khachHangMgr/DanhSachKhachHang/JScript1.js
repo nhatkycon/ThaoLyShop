@@ -211,7 +211,7 @@
             }
         }
     },
-    add: function (fn) {
+    add: function (fn,fn1) {
         DanhSachKhachHangFn.loadHtml(function () {
             var newDlg = $('#DanhSachKhachHangMdl-dlgNew');
             $(newDlg).dialog({
@@ -236,7 +236,9 @@
                                 fn(_ID, _Ten);
                             }
                             $(newDlg).dialog('close');
-                        }, '#DanhSachKhachHangMdl-List');
+                        }, '#DanhSachKhachHangMdl-List', function (dt1, _Ten, _Mobile, _DiaChi) {
+                            fn1(dt1, _Ten, _Mobile, _DiaChi);
+                        });
                     },
                     'Đóng': function () {
                         $(newDlg).dialog('close');
@@ -283,7 +285,7 @@
             }
         }
     },
-    save: function (validate, fn, grid) {
+    save: function (validate, fn, grid, fn1) {
         if (typeof (grid) == 'undefined') grid == '#DanhSachKhachHangMdl-List';
         var newDlg = $('#DanhSachKhachHangMdl-dlgNew');
         var ID = $('.ID', newDlg);
@@ -366,6 +368,7 @@
                 adm.loading(null);
                 if (typeof(fn) == 'function') {
                     fn(dt, _Ten);
+                    fn1(dt, _Ten, _Mobile, _DiaChi);
                 }
                 $(grid).trigger('reloadGrid');
             }

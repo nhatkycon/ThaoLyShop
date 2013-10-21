@@ -202,9 +202,13 @@ public class DatHangChiTietDal
     #region Extend
     public static DatHangChiTietCollection SelectByDhId(string DH_ID)
     {
+        return SelectByDhId(DAL.con(), DH_ID);
+    }
+    public static DatHangChiTietCollection SelectByDhId(SqlConnection con, string DH_ID)
+    {
         var List = new DatHangChiTietCollection();
         var obj = new SqlParameter[1];
-        if(!string.IsNullOrEmpty(DH_ID))
+        if (!string.IsNullOrEmpty(DH_ID))
         {
             obj[0] = new SqlParameter("DH_ID", DH_ID);
         }
@@ -213,6 +217,27 @@ public class DatHangChiTietDal
             obj[0] = new SqlParameter("DH_ID", DBNull.Value);
         }
         using (IDataReader rd = SqlHelper.ExecuteReader(DAL.con(), CommandType.StoredProcedure, "sp_tblDatHangChiTiet_Select_SelectByDhId_linhnx", obj))
+        {
+            while (rd.Read())
+            {
+                List.Add(getFromReader(rd));
+            }
+        }
+        return List;
+    }
+    public static DatHangChiTietCollection SelectByKhId(SqlConnection con, string KH_ID)
+    {
+        var List = new DatHangChiTietCollection();
+        var obj = new SqlParameter[1];
+        if (!string.IsNullOrEmpty(KH_ID))
+        {
+            obj[0] = new SqlParameter("KH_ID", KH_ID);
+        }
+        else
+        {
+            obj[0] = new SqlParameter("KH_ID", DBNull.Value);
+        }
+        using (IDataReader rd = SqlHelper.ExecuteReader(DAL.con(), CommandType.StoredProcedure, "sp_tblDatHangChiTiet_Select_SelectByKhId_linhnx", obj))
         {
             while (rd.Read())
             {

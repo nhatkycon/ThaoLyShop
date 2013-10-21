@@ -366,10 +366,12 @@ namespace linh.httpModule
                     string foldername = Guid.NewGuid().ToString().Replace("-", "");
                     string imgten = Guid.NewGuid().ToString();
                     Directory.CreateDirectory(imgSaveSanPham + foldername);
-
-                    img.Resize(326);
+                    if(img.Width>1024)
+                    {
+                        img.Resize(1024);
+                    }
                     context.Request.Files[0].SaveAs(imgSaveSanPham + foldername + "/" + imgten + "full" + img.Ext);
-                    img.Crop(90, 90);
+                    img.Resize(300);
                     img.Save(imgSaveSanPham + foldername + "/" + imgten + img.Ext);
                     var item = new Files();
                     item.Download = 0;
