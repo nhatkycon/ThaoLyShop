@@ -9,6 +9,13 @@ var thaoLyFn= {
         
         thaoLyFn.DatHangThemFn();
         thaoLyFn.ShipThemFn();
+
+        thaoLyFn.ChamSocThemFn();
+
+        thaoLyFn.ShipDanhSachFn();
+
+        thaoLyFn.StoreFn();
+
     }
     , url: domain + '/lib/ajax/KhachHang/Default.aspx'
     , KhachHangHeaderFn:function () {
@@ -16,14 +23,22 @@ var thaoLyFn= {
         
         if ($(pnl).length < 1) return;
 
-        var txt = pnl.find('.KhachHangHeaderSearchText');
-        var NguonGoc_Id = pnl.find('.NguonGoc_Id');
-        var KhuVuc_Id = pnl.find('.KhuVuc_Id');
+        var txt = pnl.find('[name="q"]');
         var searchBtn = pnl.find('.KhachHangSearchBtn');
 
         searchBtn.click(function() {
             var data = pnl.find(':input').serialize();
             document.location.href = '?' + data;
+        });
+        txt.focus(function () {            
+            txt.unbind('keypress').bind('keypress', function (evt) {
+                if (evt.keyCode == 13) {
+                    evt.preventDefault();
+                    var data = pnl.find(':input').serialize();
+                    document.location.href = '?' + data;
+                    return false;
+                }
+            });
         });
 
     }
@@ -82,6 +97,33 @@ var thaoLyFn= {
                 }
             });
         });
+        
+
+        var saveAndHdBtn = pnl.find('.saveAndHdBtn');
+        saveAndHdBtn.click(function () {
+            var data = pnl.find(':input').serializeArray();
+            data.push({ name: 'act', value: 'addAndHoaDon' });
+            $.ajax({
+                url: thaoLyFn.url
+                , data: data
+                , success: function (dt) {
+                    document.location.href = '../DatHang/Edit.aspx?id=' + dt;
+                }
+            });
+        });
+
+        var HH_ID = pnl.find('.HH_ID');
+        var HH_Ma = pnl.find('.HH_Ma');
+        if ($(HH_Ma).length == 0) return;
+        adm.regType(typeof (hangHoaMgrFn), 'appStore.commonStore.hangHoaMgr.Class1, appStore.commonStore.hangHoaMgr', function () {
+            hangHoaMgrFn.autoCompleteByQ(HH_Ma, function (event, ui) {
+                HH_ID.val(ui.item.id);
+                HH_Ma.val(ui.item.ma);
+            });
+            HH_Ma.unbind('click').click(function () {
+                HH_Ma.autocomplete('search', '');
+            });
+        });
     }
     , KhachHangSaveFn: function () {
 
@@ -96,8 +138,8 @@ var thaoLyFn= {
         var KH_Ten = pnl.find('.KH_Ten');
         var KH_Mobile = pnl.find('.KH_Mobile');
         var KH_DiaChi = pnl.find('.KH_DiaChi');
-
         var btnThemNhanhKH = pnl.find('.btnThemNhanhKH');
+
         var NgayGiao = pnl.find('#NgayGiaoPicker');
         var NgayGiaoYeuCau = pnl.find('#NgayGiaoYeuCauPicker');
         var NgayDatPicker = pnl.find('#NgayDatPicker');
@@ -130,7 +172,7 @@ var thaoLyFn= {
                     KH_Ten.attr('data-id', dt1);
                     KH_Ten.val(_Ten);
                     KH_ID.val(dt1);
-                    KH_Mobile.val(ui.item.Mobile);
+                    KH_Mobile.val(_Mobile);
                     KH_DiaChi.val(_DiaChi);
                 });
             });
@@ -369,5 +411,96 @@ var thaoLyFn= {
                 }
             });
         });
+    }
+    , ShipDanhSachFn: function() {
+        var ckbAll = $('.ship-all-ckb');
+        var items = $('.ship-item-ckb');
+        ckbAll.click(function() {
+            var item = $(this);
+            var ck = item.is(':checked');
+            if (ck) {
+                items.attr('checked', 'checked');
+            } else {
+                items.removeAttr('checked');
+            }
+        });
+
+
+        var pnl = $('.ShipHeader');
+        if ($(pnl).length < 1) return;
+        var btn = pnl.find('.btnPrint');
+        var DanhSach = $('.ShipDanhSach');
+        btn.click(function() {
+            var urlIn = domain + '/lib/pages/Ship/InDanhSach.aspx?' + DanhSach.find(':input').serialize();
+            document.location.href = urlIn;
+        });
+
+    }
+    , urlChamSoc: domain + '/lib/ajax/ChamSoc/Default.aspx'
+    , ChamSocThemFn: function () {
+        var pnl = $('.ChamSocForm');
+        if ($(pnl).length < 1) return;
+
+        var savebtn = pnl.find('.savebtn');
+
+
+        var KH_ID = pnl.find('.KH_ID');
+        var KH_Ten = pnl.find('.KH_Ten');
+        var KH_Mobile = pnl.find('.KH_Mobile');
+        var KH_DiaChi = pnl.find('.KH_DiaChi');
+        var btnThemNhanhKH = pnl.find('.btnThemNhanhKH');
+
+        adm.regType(typeof (DanhSachKhachHangFn), 'appStore.pmSpa.khachHangMgr.DanhSachKhachHang.Class1, appStore.pmSpa.khachHangMgr', function () {
+            DanhSachKhachHangFn.autoCompleteSearch(KH_Ten, function (event, ui) {
+                KH_Ten.attr('data-id', ui.item.id);
+                KH_ID.val(ui.item.id);
+                KH_Mobile.val(ui.item.Mobile);
+                KH_DiaChi.val(ui.item.DiaChi);
+            });
+            KH_Ten.unbind('click').click(function () {
+                KH_Ten.autocomplete('search', '');
+            });
+            btnThemNhanhKH.unbind('click').click(function () {
+                DanhSachKhachHangFn.add(function (_ID, _Ten) {
+
+                }, function (dt1, _Ten, _Mobile, _DiaChi) {
+                    KH_Ten.attr('data-id', dt1);
+                    KH_Ten.val(_Ten);
+                    KH_ID.val(dt1);
+                    KH_Mobile.val(_Mobile);
+                    KH_DiaChi.val(_DiaChi);
+                });
+            });
+        });
+
+        var xoaBtn = pnl.find('.xoaBtn');
+        xoaBtn.click(function () {
+            var data = pnl.find(':input').serializeArray();
+            data.push({ name: 'act', value: 'xoa' });
+            $.ajax({
+                url: thaoLyFn.urlChamSoc
+                , data: data
+                , success: function (dt) {
+                    document.location.href = 'Default.aspx';
+                }
+            });
+        });
+
+        savebtn.click(function () {
+            var data = pnl.find(':input').serializeArray();
+            data.push({ name: 'act', value: 'add' });
+            $.ajax({
+                url: thaoLyFn.urlChamSoc
+                , data: data
+                , success: function (dt) {
+                    alert('Lưu thành công');
+                    history.go(-1);
+                }
+            });
+        });
+    }
+    , StoreFn:function () {
+        var container = $('#container');
+
     }
 }

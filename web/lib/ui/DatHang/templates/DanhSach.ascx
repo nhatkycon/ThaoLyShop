@@ -3,33 +3,33 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <td>
+            <th>
                 #
-            </td>
-            <td>
+            </th>
+            <th>
                 Khách hàng
-            </td>
-            <td>
+            </th>
+            <th>
                 Mobile
-            </td>
-            <td>
+            </th>
+            <th>
                 Địa chỉ
-            </td>
-            <td>
+            </th>
+            <th>
                 Ưu tiên
-            </td>
-            <td>
+            </th>
+            <th>
                 Ngày đặt
-            </td>
-            <td>
+            </th>
+            <th>
                 Ngày giao y/c
-            </td>
-            <td>
+            </th>
+            <th>
                 Trạng thái
-            </td>
-            <td>
+            </th>
+            <th>
                 Đã giao
-            </td>
+            </th>
         </tr>    
     </thead>
     <tbody>

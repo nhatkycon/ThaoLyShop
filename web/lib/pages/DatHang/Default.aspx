@@ -4,11 +4,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-        <div class="KhachHangHeader ModuleHeader well">
+        <div class="KhachHangHeader ModuleHeader well form-inline">
             <a href="Edit.aspx" class="btn">Thêm</a>
-            <uc2:DanhMucByLoaiDanhMuc Visible="False" ControlName="NguonGoc_Id" ControlId="NguonGoc_Id" ID="NguonGoc" runat="server" />
-            <uc2:DanhMucByLoaiDanhMuc Visible="False" ControlName="KhuVuc_Id" ControlId="KhuVuc_Id" ID="KhuVuc" runat="server" />    
-            <input name="q" value="<%=Request["q"] %>" type="text" class="input-xlarge"/>
+            <uc2:DanhMucByLoaiDanhMuc ControlName="TT_ID" ControlId="TT_ID" ID="TT_ID" runat="server" />
+            <uc2:DanhMucByLoaiDanhMuc Visible="False" ControlName="KhuVuc_Id" ControlId="KhuVuc_Id" ID="KhuVuc" runat="server" />   
+            <label class="checkbox">
+                <input type="checkbox"name="GiaoHang" id="GiaoHang"/> 
+                Đã giao
+            </label>
+            <input name="q" placeholder="Nhập tên, mobile, địa chỉ, mã đặt hàng" value="<%=Request["q"] %>" type="text" class="input-xlarge"/>
             <a href="javascript:;" class="btn KhachHangSearchBtn">
                 <i class="icon icon-search"></i>
             </a>
@@ -16,7 +20,9 @@
                 <i class="icon icon-remove"></i>
             </a>
         </div>
-    <h3>Đặt hàng</h3>
         <uc1:DanhSach ID="DanhSach1" runat="server" />
+    <ul class="PagingList">
+        <%=paging %>
+    </ul>
 </asp:Content>
 

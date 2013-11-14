@@ -14,7 +14,6 @@
     <div class="form-horizontal">
         <fieldset>
             <div class="row row-fluid">
-                <div class="span5">
                     <!-- Text input-->
                     
                     <input id="ID" style="display: none;" value="<%=Item.ID == Guid.Empty ? string.Empty  : Item.ID.ToString() %>" name="ID" type="text"class="input-xlarge" required="">
@@ -27,8 +26,6 @@
                         <p class="help-block">Nhập họ và tên đầy đủ của bạn</p>
                         </div>
                     </div>
-
-        
 
                     <!-- Text input-->
                     <div class="control-group">
@@ -91,16 +88,15 @@
                         <textarea id="DiaChi" name="DiaChi"><%=Item.DiaChi %></textarea>
                         </div>
                     </div>
-
-                </div>
                 <%if (string.IsNullOrEmpty(id))
                 {%>
-                <div class="span5 pull-right">
                     <!-- Text input-->
                     <div class="control-group">
                         <label class="control-label" for="Email">Hàng</label>
                         <div class="controls">
-                        <uc2:DanhSachHangHoa ControlName="HH_ID" ControlId="HH_ID" ID="DanhSachHangHoa1" runat="server" />
+                        <uc2:DanhSachHangHoa ControlName="HH_ID" ControlId="HH_ID" Visible="False" ID="DanhSachHangHoa1" runat="server" />
+                            <input class="HH_Ma" name="HH_Ma" type="text" value=""/>
+                            <input class="HH_ID" style="display: none;" name="HH_ID" type="text" value=""/>
                         <p class="help-block">Hàng hóa, đúng màu và cỡ</p>
                         </div>
                     </div>
@@ -110,6 +106,7 @@
                         <div class="controls">
                             <div id="NgayDatPicker" class="input-append date">
                                 <input 
+                                    value="<%=DateTime.Now.ToString("hh:mm dd/MM/yyyy") %>"
                                     data-format="hh:mm dd/MM/yyyy" 
                                     class="NgayDat" 
                                     id="NgayDat" 
@@ -185,7 +182,6 @@
                         <p class="help-block">Mức độ ưu tiên của đơn hàng</p>
                         </div>
                     </div>
-                </div>
                 <%} %>
             </div>
         <div class="alert alert-success">
@@ -205,7 +201,8 @@
         else
         {%>
         <a href="javascript:;" class="btn btn-primary btn-large savebtn">Lưu</a>
-        <a href="javascript:;" class="btn btn-success btn-large saveAndShipBtn">Lưu tạo hóa đơn</a>
+        <a href="javascript:;" class="btn btn-success btn-large saveAndHdBtn">Tạo đặt hàng</a>
+        <a href="javascript:;" class="btn btn-success btn-large saveAndShipBtn">Tạo hóa đơn</a>
         <%} %>
 </div>
 

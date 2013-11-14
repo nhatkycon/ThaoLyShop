@@ -6,13 +6,16 @@
         width: 100%;
     }
 </style>
-
+<br/><br/><br/><br/><br/><br/>
 <table class="auto-style1">
     <tr>
         <td>
             <%=ItemDm.Description %>
         </td>
-        <td style="width: 300px;">
+        <td style="width: 20px;">
+            
+        </td>
+        <td style="width: 350px;">
             <table>
                 <tr>
                     <td style="width: 100px; text-align: right;">
@@ -20,6 +23,14 @@
                     </td>
                     <td>
                         <%=Item.Ma %>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td style="width: 100px; text-align: right;">
+                        Đặt hàng:
+                    </td>
+                    <td>
+                        <%=Item.DH_Ma %>
                     </td>                    
                 </tr>
                 <tr>

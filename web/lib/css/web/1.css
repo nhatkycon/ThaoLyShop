@@ -382,7 +382,9 @@ a:hover.reg-save
     display: none;
 }
 .body {
-    margin: 10px;
+    margin: 5px;
+    margin-top: 30px;
+    padding-bottom: 100px;
 }
 .ModuleHeader a.btn {
     margin-bottom: 10px
@@ -391,6 +393,10 @@ a:hover.reg-save
 
 .table tbody tr > td.success {
   background-color: #dff0d8 !important;
+}
+
+.table tbody tr > td.bold {
+    font-weight: bold !important;
 }
 
 .table tbody tr > td.error {
@@ -408,7 +414,9 @@ a:hover.reg-save
 .table-hover tbody tr:hover > td.success {
   background-color: #d0e9c6 !important;
 }
-
+.table tbody tr:hover > td.bold {
+    font-weight: bold !important;
+}
 .table-hover tbody tr:hover > td.error {
   background-color: #ebcccc !important;
 }
@@ -637,4 +645,141 @@ ul,li,ol
 .DanhSachHangHoaList li ul li .thuChi-item-li-tien-loai
 {
     position: absolute;    
+}
+.product-item {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+}
+.product-item .product-item-img {
+    width: 300px;
+}
+.product-item .product-item-infobox {
+    padding: 10px;
+}
+.product-item .product-item-infobox h4 {
+    margin-bottom: 4px;
+}
+.product-item .product-item-title {
+    font-size: 12pt;
+    color: #666;
+    display: block;
+    text-align: center;
+}
+.product-item .product-item-price {
+    line-height: 13px;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 2px;
+}
+.product-item .product-item-stock {
+    line-height: 13px;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 2px;
+    color: #666;
+}
+
+.product-item .product-item-description {
+    line-height: 13px;
+}
+
+.product-view {
+    cursor: pointer;
+}
+.product-view .product-item-desc {
+    line-height: 160%;
+}
+.product-view .product-item-img {
+    
+}
+.product-view .product-item-infobox {
+}
+.product-view .product-item-infobox h1 {
+    margin-bottom: 4px;
+}
+.product-view .product-item-title {
+    font-size: 12pt;
+    color: #666;
+}
+.product-view .product-item-price {
+    line-height: 13px;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 2px;
+}
+.product-view .product-item-stock {
+    line-height: 13px;
+    margin-top: 20px;
+    padding-top: 0px;
+    font-size: 120%;
+    color: #666;
+}
+.product-view .product-item-stock .price {
+    color: red;
+    font-weight: bold;
+}
+.product-view .product-item-shortDescription {
+    line-height: 18px;
+}
+.product-view .product-item-description {
+    margin-top: 20px;
+    line-height: 160%;
+}
+.product-view .product-item-relateImg {
+    display: block;
+    padding: 10px 0px;
+    text-align: center;
+}
+.product-view .product-item-relateImg-img {
+    display: inline-block;
+}
+
+.product-view .hh-details-header {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.product-view .hh-details-body {
+    margin-top: 10px;
+}
+
+.container.pad40 {
+    padding-top: 60px;
+}
+.PagingList {
+    margin-top: 10px;
+    padding: 5px;
+}
+.PagingList li {
+    display: inline-block;
+}
+.PagingItem
+{
+    background-color: #EFEFEF;
+    background-image:none;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px; 
+    -webkit-border-radius:5px 5px 5px 5px; 
+    color: #000000;
+    display: inline-block;
+    margin-left: 5px;
+    padding: 3px 10px;
+    text-decoration: none;
+}
+
+.PagingItemActive 
+{
+    background-image:none;
+    background-color: #FFFFFF;
+    border: 1px solid #333333;
+    color: #000000;
+    display: inline-block;
+    margin-left: 5px;
+    text-decoration: none;
+}
+a.PagingItem:hover {
+    background-color: #FFFFFF;
+    color: #999999;
 }

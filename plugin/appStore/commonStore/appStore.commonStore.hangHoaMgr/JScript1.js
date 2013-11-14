@@ -803,6 +803,7 @@
                                             label: item.Ten,
                                             value: item.Ten,
                                             id: item.ID,
+                                            soLuong: item.SoLuong,
                                             rowid: item.RowId,
                                             ma: item.Ma,
                                             DonVi: item.DonVi_Ten,
@@ -835,7 +836,7 @@
             } else {
                 return $("<li></li>")
 				            .data("item.autocomplete", item)
-				            .append("<a><b>" + item.ma + '</b> ' + item.label + ' [' + adm.formatTienStr(item.gia) + '] </a>')
+				            .append('<a><b>' + item.ma + ' [' + item.soLuong + ']</b> ' + item.label + ':' + adm.formatTienStr(item.gia) + ' </a>')
 				            .appendTo(ul);
             }
         };

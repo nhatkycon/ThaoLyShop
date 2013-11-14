@@ -71,11 +71,17 @@ namespace linh.httpModule
                        
 
                     }
+
                     var img = new ImageProcess(context.Request.Files[0].InputStream, imgten);
+                    
+                    if(img.Width>1024)
+                    {
+                        img.Resize(1024);
+                    }
                     context.Request.Files[0].SaveAs(imgSaveLoc + imgten + "full" + img.Ext);
 
-                    img.Resize(326);
-                    context.Request.Files[0].SaveAs(imgSaveLoc + imgten + "326" + img.Ext);
+                    img.Resize(400);
+                    img.Save(imgSaveLoc + imgten + "400" + img.Ext);
 
                     img.Crop(50, 50);
                     img.Save(imgSaveLoc + imgten + img.Ext);

@@ -3,24 +3,18 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <td>
-                Mã
-            </td>
-            <td>
+            <th>
                 Tên
-            </td>
-            <td>
+            </th>
+            <th>
                 Giá
-            </td>
-            <td>
-                Cỡ
-            </td>
-            <td>
-                Màu
-            </td>
-            <td>
+            </th>
+            <th>
                 Số lượng
-            </td>
+            </th>
+            <th>
+                Link
+            </th>
         </tr>    
     </thead>
     <asp:Repeater runat="server" ID="rpt">

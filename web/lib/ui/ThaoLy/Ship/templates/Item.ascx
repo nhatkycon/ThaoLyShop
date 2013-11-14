@@ -1,12 +1,15 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Item.ascx.cs" Inherits="lib_ui_ThaoLy_Ship_templates_Item" %>
 <tr>
     <td>
+        <input type="checkbox" class="ship-item-ckb" name="id" value="<%=Item.ID %>"/>
+    </td>
+    <td>
         <a href="/lib/pages/Ship/Edit.aspx?id=<%=Item.ID %>">
             <%=Item.Ma %>
         </a>
     </td>
     <td>
-        <a href="/lib/pages/Ship/Edit.aspx?id=<%=Item.DH_ID %>">
+        <a href="/lib/pages/DatHang/Edit.aspx?id=<%=Item.DH_ID %>">
             <%=Item.DH_Ma %>
         </a>
     </td>

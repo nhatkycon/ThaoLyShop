@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Item.ascx.cs" Inherits="lib_ui_DatHang_templates_Item" %>
-<tr class="<%=Item.GiaoHang ? "success" : "" %>">
+<tr class="<%=Item.GiaoHang ? "success" : "" %><%=Item.Readed  ? "" : " info" %>">
     <td>
         <a href="/lib/pages/DatHang/Edit.aspx?id=<%=Item.ID %>">
             <%=Item.Ma %>
@@ -20,10 +20,10 @@
         <%=Item.UuTien %>
     </td>
     <td>
-        <%=Item.NgayDat == DateTime.MinValue ? string.Empty : Item.NgayDat.ToString("hh:mm dd/MM") %>
+        <%=Item.NgayDat == DateTime.MinValue ? string.Empty : Item.NgayDat.ToString("HH:mm dd/MM") %>
     </td>
     <td>
-        <%=Item.NgayGiaoYeuCau == DateTime.MinValue ? string.Empty : Item.NgayGiaoYeuCau.ToString("hh:mm dd/MM") %>
+        <%=Item.NgayGiaoYeuCau == DateTime.MinValue ? string.Empty : Item.NgayGiaoYeuCau.ToString("HH:mm dd/MM") %>
     </td>
     <td>
         <%=Item.TT_Ten %>

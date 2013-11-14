@@ -960,7 +960,12 @@
         }
     },
     createReport: function (id) {
-        var request = domain + '/lib/' + quanLyXuatNhapFn.urlDefault().toString() + '&subAct=reports&ID=' + id;
+        var request = '';
+        if (typeof (domain) != "undefined") {
+            request = domain + '/lib/' + quanLyXuatNhapFn.urlDefault().toString() + '&subAct=reports&ID=' + id;
+        } else {
+            request = document.location.href + quanLyXuatNhapFn.urlDefault().toString() + '&subAct=reports&ID=' + id;
+        }
         var win = window.open(request, 'popup', 'width=1024, height=700');
         win.focus();
     },

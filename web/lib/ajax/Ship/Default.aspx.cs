@@ -37,6 +37,7 @@ public partial class lib_ajax_Ship_Default : basePage
 
         DaGiao = !string.IsNullOrEmpty(DaGiao) ? "true" : "false";
         Readed = !string.IsNullOrEmpty(Readed) ? "true" : "false";
+        TraTien = !string.IsNullOrEmpty(TraTien) ? "true" : "false";
         switch (act)
         {
             case "add":
@@ -55,7 +56,6 @@ public partial class lib_ajax_Ship_Default : basePage
                         item = ShippingDal.SelectById(new Guid(ID));
 
                     }
-                    item.NgayTao = DateTime.Now;
 
                     if (!string.IsNullOrEmpty(TT_ID))
                     {
@@ -81,7 +81,7 @@ public partial class lib_ajax_Ship_Default : basePage
                         item.NgayGiao = Convert.ToDateTime(NgayGiao, new CultureInfo("vi-vn"));
                     }
                    
-                    item.Readed = Convert.ToBoolean(Readed);
+                    //item.Readed = Convert.ToBoolean(Readed);
                     item.DaGiao = Convert.ToBoolean(DaGiao);
                     item.TraTien = Convert.ToBoolean(TraTien);
                     item = string.IsNullOrEmpty(ID) ? ShippingDal.Insert(item) : ShippingDal.Update(item);

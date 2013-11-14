@@ -118,17 +118,7 @@ namespace docsoft.entities
 
         public static ChamSoc SelectById(Guid CS_ID)
         {
-            var Item = new ChamSoc();
-            var obj = new SqlParameter[1];
-            obj[0] = new SqlParameter("CS_ID", CS_ID);
-            using (IDataReader rd = SqlHelper.ExecuteReader(DAL.con(), CommandType.StoredProcedure, "sp_tblChamSoc_Select_SelectById_linhnx", obj))
-            {
-                while (rd.Read())
-                {
-                    Item = getFromReader(rd);
-                }
-            }
-            return Item;
+            return SelectById(DAL.con(),CS_ID);
         }
 
         public static ChamSocCollection SelectAll()
@@ -143,9 +133,10 @@ namespace docsoft.entities
             }
             return List;
         }
-        public static Pager<ChamSoc> pagerNormal(string url, bool rewrite, string sort, string q, int size)
+        public static Pager<ChamSoc> pagerNormal(SqlConnection con, string url, bool rewrite, string sort
+            , string q, int size, string TT_ID, string LOAI_ID)
         {
-            var obj = new SqlParameter[2];
+            var obj = new SqlParameter[4];
             obj[0] = new SqlParameter("Sort", sort);
             if (!string.IsNullOrEmpty(q))
             {
@@ -155,8 +146,24 @@ namespace docsoft.entities
             {
                 obj[1] = new SqlParameter("q", DBNull.Value);
             }
+            if (!string.IsNullOrEmpty(TT_ID))
+            {
+                obj[2] = new SqlParameter("TT_ID", TT_ID);
+            }
+            else
+            {
+                obj[2] = new SqlParameter("TT_ID", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(LOAI_ID))
+            {
+                obj[3] = new SqlParameter("LOAI_ID", LOAI_ID);
+            }
+            else
+            {
+                obj[3] = new SqlParameter("LOAI_ID", DBNull.Value);
+            }
 
-            var pg = new Pager<ChamSoc>("sp_tblChamSoc_Pager_Normal_linhnx", "page", size, 10, rewrite, url, obj);
+            var pg = new Pager<ChamSoc>(con, "sp_tblChamSoc_Pager_Normal_linhnx", "page", size, 10, rewrite, url, obj);
             return pg;
         }
         #endregion
@@ -224,6 +231,20 @@ namespace docsoft.entities
                 }
             }
             return List;
+        }
+        public static ChamSoc SelectById(SqlConnection con, Guid CS_ID)
+        {
+            var Item = new ChamSoc();
+            var obj = new SqlParameter[1];
+            obj[0] = new SqlParameter("CS_ID", CS_ID);
+            using (IDataReader rd = SqlHelper.ExecuteReader(DAL.con(), CommandType.StoredProcedure, "sp_tblChamSoc_Select_SelectById_linhnx", obj))
+            {
+                while (rd.Read())
+                {
+                    Item = getFromReader(rd);
+                }
+            }
+            return Item;
         }
         #endregion
 

@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Store.master.cs" Inherits="lib_master_Store" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="../css/web/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="../css/web/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/web/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="../css/web/animate-custom.css" rel="stylesheet" />
+    <link href="../css/web/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../css/web/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
+    <link href="../css/web/1.css" rel="stylesheet" />
+    <link href="../css/admin/redmond/ui-lightness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+    <script src="/lib/js/jqueryLib/jquery-1.8.3.min.js"></script>
+    <script src="/lib/js/jqueryLib/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script>
+    <script src="/lib/js/jqueryLib/swipe.min.js" type="text/javascript"></script>
+    <script src="/lib/js/jqueryLib/jquery.elevateZoom-3.0.7.min.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+        <div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=210680592446410";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <form id="form1" runat="server">
+            <div class="navbar navbar-inverse">
+                  <div class="navbar-inner">
+                    <ul class="nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="https://facebook.com/thaolyshop">
+                                <i class="icon icon-facebook-sign"></i>
+                            </a></li>
+                        <li><a href="ymsr:linh_net">
+                                <i class="icon icon-question"></i>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+        <div class="pad40">
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>            
+        </div>
+    </form>
+    <script type="text/javascript">
+        var domain = '<%=domain %>';
+    </script>
+    <script src="/lib/js/jqueryLib/bootstrap-datetimepicker.min.js"></script>
+    <script src="/lib/js/jqueryLib/jquery.tmpl.min.js"></script>
+    <script src="/lib/js/jqueryLib/admin.js"></script>
+    <script src="/lib/css/web/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/js/jqueryLib/blocksit.min.js"></script>
+    <script src="/lib/js/web/c.js"></script>
+    <script src="/lib/js/web/home.js"></script>
+</body>
+</html>

@@ -7,9 +7,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <div class="KhachHangHeader ModuleHeader well">
-        <uc2:DanhMucByLoaiDanhMuc_1 Visible="False" ControlName="NguonGoc_Id" ControlId="NguonGoc_Id" ID="NguonGoc" runat="server" />
+        <uc2:DanhMucByLoaiDanhMuc_1 ControlName="DM_ID" ControlId="DM_ID" ID="DM_ID" runat="server" />
         <uc2:DanhMucByLoaiDanhMuc_1 Visible="False" ControlName="KhuVuc_Id" ControlId="KhuVuc_Id" ID="KhuVuc" runat="server" />    
-        <input name="q" value="<%=Request["q"] %>" type="text" class="input-xlarge"/>
+        <input name="q" value="<%=Request["q"] %>" type="text" class="input-xlarge" placeholder="Nhập tên, mã"/>
         <a href="javascript:;" class="btn KhachHangSearchBtn">
             <i class="icon icon-search"></i>
         </a>
@@ -17,7 +17,9 @@
             <i class="icon icon-remove"></i>
         </a>
     </div>
-    <h3>Danh sách hàng hóa</h3>
-            <uc1:DanhSach ID="DanhSach1" runat="server" />
+    <uc1:DanhSach ID="DanhSach1" runat="server" />
+    <ul class="PagingList">
+        <%=paging %>
+    </ul>
 </asp:Content>
 

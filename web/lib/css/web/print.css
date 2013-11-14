@@ -1,0 +1,22 @@
+﻿ .auto-style1 {
+    width: 100%;
+}
+body, * {
+    font-family: arial;
+    font-size: 8pt;
+    line-height: 150%;
+}
+td {
+    
+}
+.fullpage, .page {
+    width: 350px;
+    height: 500px;
+    margin-top: 20px;
+
+}
+.page
+    {
+     -webkit-transform: rotate(-90deg); -moz-transform:rotate(-90deg);
+     filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    }

@@ -1,26 +1,26 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DanhSach.ascx.cs" Inherits="lib_ui_ThaoLy_ChamSoc_templates_DanhSach" %>
-<%@ Register src="~/lib/ui/ThaoLy/KhachHang/templates/Item.ascx" tagname="Item" tagprefix="uc1" %>
+<%@ Register src="~/lib/ui/ThaoLy/ChamSoc/templates/Item.ascx" tagname="Item" tagprefix="uc1" %>
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <td>
+            <th>
                 Mã
-            </td>
-            <td>
+            </th>
+            <th>
                 Loại
-            </td>
-            <td>
+            </th>
+            <th>
                 Nội dung
-            </td>
-            <td>
+            </th>
+            <th>
                 Nhân viên
-            </td>
-            <td>
+            </th>
+            <th>
                 Tình trạng
-            </td>
-            <td>
+            </th>
+            <th>
                 Ngày tạo
-            </td>
+            </th>
         </tr>    
     </thead>
     <asp:Repeater runat="server" ID="rpt">

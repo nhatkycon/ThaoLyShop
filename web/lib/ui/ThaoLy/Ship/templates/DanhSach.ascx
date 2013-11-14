@@ -1,41 +1,44 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DanhSach.ascx.cs" Inherits="lib_ui_ThaoLy_Ship_templates_DanhSach" %>
 <%@ Register src="Item.ascx" tagname="Item" tagprefix="uc1" %>
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover ShipDanhSach">
     <thead>
         <tr>
-            <td>
+            <th>
+                <input type="checkbox" class="ship-all-ckb" name="id"/>
+            </th>
+            <th>
                 Mã
-            </td>
-            <td>
+            </th>
+            <th>
                 Đặt hàng
-            </td>
-            <td>
+            </th>
+            <th>
                 Phí
-            </td>
-            <td>
+            </th>
+            <th>
                 Khách hàng
-            </td>
-            <td>
+            </th>
+            <th>
                 Mobile
-            </td>
-            <td>
+            </th>
+            <th>
                 Địa chỉ
-            </td>
-            <td>
+            </th>
+            <th>
                 Tình trạng
-            </td>
-            <td>
+            </th>
+            <th>
                 Ngày tạo
-            </td>
-            <td>
+            </th>
+            <th>
                 Ngày giao
-            </td>
-            <td>
+            </th>
+            <th>
                 Đã giao
-            </td>
-            <td>
+            </th>
+            <th>
                 Nộp tiền
-            </td>
+            </th>
         </tr>    
     </thead>
     <asp:Repeater runat="server" ID="rpt">

@@ -320,6 +320,20 @@ namespace docsoft.entities
             }
             return list;
         }
+        public static ShippingCollection SelectByIdList(SqlConnection con, string Id)
+        {
+            var list = new ShippingCollection();
+            var obj = new SqlParameter[1];
+            obj[0] = new SqlParameter("ID", Id);
+            using (IDataReader rd = SqlHelper.ExecuteReader(con, CommandType.StoredProcedure, "sp_tblShipping_Select_SelectByIdList_linhnx", obj))
+            {
+                while (rd.Read())
+                {
+                    list.Add(getFromReader(rd));
+                }
+            }
+            return list;
+        }
         #endregion
 
         #region Extend

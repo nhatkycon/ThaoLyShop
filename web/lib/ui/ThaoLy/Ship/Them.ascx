@@ -169,3 +169,12 @@
             <a href="javascript:;" class="btn btn-primary btn-large savebtn">Lưu</a>
           <%} %>
 </div>
+
+<%if (!string.IsNullOrEmpty(id))
+  {%>
+<script>
+    $(function () {
+        $('.TT_ID').val('<%= Item.TT_ID %>');
+    })
+</script>
+<% } %>

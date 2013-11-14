@@ -17,9 +17,14 @@ public partial class lib_pages_Ship_In : System.Web.UI.Page
         {
             if (string.IsNullOrEmpty(id)) return;
             var Item = ShippingDal.SelectById(con, new Guid(id));
+            Item.DH_Ma = DatHangDal.SelectById(Item.DH_ID).Ma;
             InItem1.Item = Item;
-            InItem1.ItemDm = DanhMucDal.SelectByMa("BAOCAO-HEADER-THUCHI", con);
+            InItem1.ItemDm = DanhMucDal.SelectByMa("BAOCAO-HEADER-THUCHI", con);            
             InItem1.ListDatHangChiTiet = DatHangChiTietDal.SelectByDhId(con, Item.DH_ID.ToString());
+
+            InItem2.Item = Item;
+            InItem2.ItemDm = InItem1.ItemDm;
+            InItem2.ListDatHangChiTiet = InItem1.ListDatHangChiTiet;
         }
     }
 }

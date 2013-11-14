@@ -53,14 +53,13 @@ public partial class lib_ajax_DatHang1_Default : basePage
                     {
                         item = new DatHang();
                         item.ID = Guid.NewGuid();
-                        item.NgayTao = DateTime.Now;                        
+                        item.NgayTao = DateTime.Now;
                     }
                     else
                     {
                         item = DatHangDal.SelectById(new Guid(ID));
 
                     }
-                    item.NgayTao = DateTime.Now;
 
                     if (!string.IsNullOrEmpty(NguonGoc_ID))
                     {
@@ -111,14 +110,14 @@ public partial class lib_ajax_DatHang1_Default : basePage
                 if (Security.IsAuthenticated())
                 {
                     var item = new DatHangChiTiet
-                                   {
-                                       DH_ID = new Guid(DH_ID),
-                                       HH_ID = new Guid(HH_ID),
-                                       HH_Gia = Convert.ToInt32(HH_Gia),
-                                       HH_SoLuong = Convert.ToInt32(HH_SoLuong),
-                                       ID = Guid.NewGuid()
-                                   };
-                    item.HH_Tong = item.HH_SoLuong*item.HH_Gia;
+                    {
+                        DH_ID = new Guid(DH_ID),
+                        HH_ID = new Guid(HH_ID),
+                        HH_Gia = Convert.ToInt32(HH_Gia),
+                        HH_SoLuong = Convert.ToInt32(HH_SoLuong),
+                        ID = Guid.NewGuid()
+                    };
+                    item.HH_Tong = item.HH_SoLuong * item.HH_Gia;
                     item.NgayTao = DateTime.Now;
                     item = DatHangChiTietDal.Insert(item);
                     HangHoaItem1.Visible = true;

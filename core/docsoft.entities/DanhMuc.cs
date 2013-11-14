@@ -403,6 +403,11 @@ namespace docsoft.entities
             {
                 obj[0] = new SqlParameter("LDM_Ma", DBNull.Value);
             }
+            List.Add(new DanhMuc()
+                         {
+                             ID = Guid.Empty
+                             , Ten = string.Empty
+                         });
             using (IDataReader rd = SqlHelper.ExecuteReader(con, CommandType.StoredProcedure, "sp_tblDanhMuc_Select_SelectByLDM_Ma_linhnx", obj))
             {
                 while (rd.Read())

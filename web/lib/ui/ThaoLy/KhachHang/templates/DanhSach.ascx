@@ -3,24 +3,27 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <td>
+            <th class="td320 td768 td1024">
+                Mã
+            </th>
+            <th class="td320 td768 td1024">
                 Tên
-            </td>
-            <td>
+            </th>
+            <th class="td320 td768 td1024">
                 Face
-            </td>
-            <td>
+            </th>
+            <th class="td320 td768 td1024">
                 Mobile
-            </td>
-            <td>
+            </th>
+            <th class="td320 td768 td1024">
                 Địa chỉ
-            </td>
-            <td>
+            </th>
+            <th class="td320 td768 td1024">
                 Khu vực
-            </td>
-            <td>
+            </th>
+            <th class="td320 td768 td1024">
                 Nguồn gốc
-            </td>
+            </th>
         </tr>    
     </thead>
     <asp:Repeater runat="server" ID="rpt">

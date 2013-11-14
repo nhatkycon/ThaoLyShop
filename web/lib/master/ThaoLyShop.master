@@ -1,11 +1,11 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ThaoLyShop.master.cs" Inherits="lib_master_ThaoLyShop" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <%--<link href="../css/admin/redmond/ui-lightness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />--%>
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <link href="../css/web/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="../css/web/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/web/bootstrap-datetimepicker.min.css" rel="stylesheet" />
@@ -13,45 +13,40 @@
     <link href="../css/web/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="../css/web/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
     <link href="../css/web/1.css" rel="stylesheet" />
-
-    <%--<script src="/lib/js/jqueryLib/jquery-1.8.3.min.js"></script>
-    <script src="/lib/js/jqueryLib/jquery-ui-1.9.2.custom.min.js"></script>--%>
-    
-  <%--  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>--%>    <link href="../css/admin/redmond/ui-lightness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+    <link href="../css/admin/redmond/ui-lightness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
     <script src="/lib/js/jqueryLib/jquery-1.8.3.min.js"></script>
-    <%--<script src="/lib/js/jqueryLib/jquery-1.9.1.min.js" type="text/javascript"></script>--%>
     <script src="/lib/js/jqueryLib/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script>
-
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
+
     <form id="form1" runat="server">
         <div class="navbar navbar-inverse navbar-fixed-top">
           <div class="navbar-inner">
-            <a class="brand" href="#">#</a>
             <ul class="nav">
               <li>
-                  <a href="/lib/pages/KhachHang/">Khách hàng</a>
+                  <a href="/lib/pages/KhachHang/">Khách</a>
               </li>
                 
               <li>
-                  <a href="/lib/pages/DatHang/">Đặt hàng</a>
+                  <a href="/lib/pages/DatHang/">Đ.hàng</a>
               </li>
                 <li>
                   <a href="/lib/pages/Ship/">Ship</a>
               </li>
               <li>
-                  <a href="/lib/pages/HangHoa/">Hàng hóa</a>
+                  <a href="/lib/pages/HangHoa/">Hàng</a>
               </li>
-             
+             <li>
+                  <a href="/lib/pages/ChamSoc/">C.sóc</a>
+              </li>
+                <li>
+                  <a href="/lib/admin/" target="_blank">B.lẻ</a>
+              </li>
             </ul>
           </div>
-        </div>
-        <hr/>
-        
+        </div><br/><br/>
         <div class="body">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>            
         </div>
@@ -63,6 +58,7 @@
     <script src="/lib/js/jqueryLib/jquery.tmpl.min.js"></script>
     <script src="/lib/js/jqueryLib/admin.js"></script>
     <script src="/lib/css/web/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/js/jqueryLib/swipe.min.js"></script>
     <script src="/lib/js/web/c.js"></script>
     <script src="/lib/js/web/home.js"></script>
 </body>

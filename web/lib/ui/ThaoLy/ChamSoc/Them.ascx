@@ -17,9 +17,33 @@
             <div class="row row-fluid">
                 <div class="span5">
                     <!-- Text input-->
-                    
+                    <%if(string.IsNullOrEmpty(khId))
+                      { %>
+                    <div class="control-group">
+                        <label class="control-label" for="KH_ID">Khách hàng</label>
+                        <div class="controls">
+                        <input class="KH_Ten" id="KH_Ten" name="KH_Ten" value="<%= Item.KH_Ten %>" data-id="<%= Item.KH_ID %>" type="text"/>
+                            <input class="KH_ID" style="display: none;" id="KH_ID" name="KH_ID" value="<%= Item.KH_ID %>" type="text"/>
+                             <% if (!string.IsNullOrEmpty(id))
+                                {%>
+                                    <a class="btn" href="/lib/pages/KhachHang/Edit.aspx?id=<%= Item.KH_ID %>">
+                                        <i class="icon icon-link"></i>
+                                    </a>
+                            <% } %>
+                            <a href="javascript:;" class="btn btnThemNhanhKH">
+                                <i class="icon icon-add"></i> Thêm nhanh
+                            </a>
+                        <p class="help-block">
+                           
+                            </p>
+                        </div>
+                    </div>
+                    <% }
+                      else
+                      {%>
+                        <input name="KH_ID" value="<%=Item.KH_ID %>" style="display: none;"/>                          
+                    <%  }%>
                     <input id="ID" style="display: none;" value="<%=Item.ID == Guid.Empty ? string.Empty  : Item.ID.ToString() %>" name="ID" type="text"class="input-xlarge" required="">
-                    
                     <!-- Text input-->
                     <div class="control-group">
                         <label class="control-label" for="Ten">Mã</label>
@@ -28,9 +52,6 @@
                         <p class="help-block">Mã chăm sóc</p>
                         </div>
                     </div>
-
-                    
-            
                     <!-- Text input-->
                     <div class="control-group">
                         <label class="control-label" for="Mobile">Loại</label>
@@ -40,7 +61,6 @@
                             </p>
                         </div>
                     </div>                    
-                        
                     <!-- Text input-->
                     <div class="control-group">
                         <label class="control-label" for="Mobile">Tình trạng</label>
@@ -50,7 +70,6 @@
                             </p>
                         </div>
                     </div>            
-                    
                     <!-- Textarea -->
                     <div class="control-group">
                         <label class="control-label" for="NoiDung">Nội dung</label>
@@ -58,15 +77,7 @@
                         <textarea id="NoiDung" name="NoiDung"><%=Item.NoiDung %></textarea>
                         </div>
                     </div>
-
                 </div>
-                <%if (string.IsNullOrEmpty(id))
-                {%>
-                <input id="KH_ID" style="display: none;" value="<%=Request["khid"] %>" name="KH_ID" type="text"class="input-xlarge" required="">
-                <%}else
-                  {%>
-                <input id="KH_ID" style="display: none;" value="<%=Item.KH_ID %>" name="KH_ID" type="text"class="input-xlarge" required="">      
-                 <% } %>
             </div>
         <div class="alert alert-success">
             Thêm thành công
@@ -85,6 +96,13 @@
         else
         {%>
         <a href="javascript:;" class="btn btn-primary btn-large savebtn">Lưu</a>
-        <a href="javascript:;" class="btn btn-success btn-large saveAndShipBtn">Lưu tạo hóa đơn</a>
         <%} %>
 </div>
+<%if(!string.IsNullOrEmpty(id)){ %>
+<script>
+    $(function () {
+        $('.LOAI_ID').val('<%=Item.LOAI_ID %>');
+        $('.TT_ID').val('<%=Item.TT_ID %>');
+    })
+</script>
+<%} %>

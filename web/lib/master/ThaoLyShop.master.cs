@@ -4,12 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using docsoft;
 
 public partial class lib_master_ThaoLyShop : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if(!Security.IsAuthenticated())
+        {
+            Response.Redirect(domain + "/lib/pages/Login.aspx?ret=" + Server.UrlEncode(Request.Url.PathAndQuery));
+        }
     }
     public string domain
     {

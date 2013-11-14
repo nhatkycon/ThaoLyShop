@@ -12,7 +12,7 @@
         <%=Item._HangHoa.GNY %>
     </td>
     <td>
-        <%=Item._HangHoa.SoLuong %>
+        <%=Item.HH_SoLuong %>
     </td>
     <td>
         <a href="javascript:;" class="btn xoaHangBtn" data-id="<%=Item.ID %>">

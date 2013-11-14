@@ -422,6 +422,31 @@ public class DatHangDal
         }
         return List;
     }
+
+    public static Pager<DatHang> pagerAll(SqlConnection con, string url, bool rewrite, string sort, string q, int size, string TT_ID, string GiaoHang)
+    {
+        var obj = new SqlParameter[4];
+        obj[0] = new SqlParameter("Sort", sort);
+        obj[1] = new SqlParameter("q", q);
+        if(string.IsNullOrEmpty(TT_ID))
+        {
+            obj[2] = new SqlParameter("TT_ID", DBNull.Value);    
+        }
+        else
+        {
+            obj[2] = new SqlParameter("TT_ID", TT_ID);
+        }
+        if (string.IsNullOrEmpty(GiaoHang))
+        {
+            obj[3] = new SqlParameter("GiaoHang", DBNull.Value);
+        }
+        else
+        {
+            obj[3] = new SqlParameter("GiaoHang", GiaoHang);
+        }
+        var pg = new Pager<DatHang>(con, "sp_tblDatHang_Pager_pagerAll_linhnx", "page", size, 10, rewrite, url, obj);
+        return pg;
+    }
     #endregion
 }
 #endregion

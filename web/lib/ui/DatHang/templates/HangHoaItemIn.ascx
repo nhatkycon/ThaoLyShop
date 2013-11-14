@@ -10,7 +10,7 @@
         <%=Item._HangHoa.GNY %>
     </td>
     <td>
-        <%=Item._HangHoa.SoLuong %>
+        <%=Item.HH_SoLuong %>
     </td>
     <td>
         <% = Item.HH_Gia * Item.HH_SoLuong %>

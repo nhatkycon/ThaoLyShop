@@ -228,7 +228,9 @@
                             DanhSachKhachHangFn.draff(function () {
 
                             });
-                        }, '#DanhSachKhachHangMdl-List');
+                        }, '#DanhSachKhachHangMdl-List', function (dt1, _Ten, _Mobile, _DiaChi) {
+                            fn1(dt1, _Ten, _Mobile, _DiaChi);
+                        });
                     },
                     'Lưu và đóng': function () {
                         DanhSachKhachHangFn.save(false, function (_ID, _Ten) {
@@ -332,10 +334,10 @@
         //endregion
 
         var err = '';
-        if (_NguonGoc_ID == '') { err += 'Chọn nguồn gốc<br/>'; };
-        if (_KhuVuc_ID == '') { err += 'Chọn khu vực khách hàng<br/>'; };
-        if (_Ten == '') { err += 'Nhập tên<br/>'; };
-        if (_Ma == '') { err += 'Nhập mã<br/>'; };
+        //if (_NguonGoc_ID == '') { err += 'Chọn nguồn gốc<br/>'; };
+        //if (_KhuVuc_ID == '') { err += 'Chọn khu vực khách hàng<br/>'; };
+        //if (_Ten == '') { err += 'Nhập tên<br/>'; };
+        //if (_Ma == '') { err += 'Nhập mã<br/>'; };
 
         if (err != '') { spbMsg.html(err); return false; }
         if (validate) { if (typeof (fn) == 'function') { fn(); } return false; }
@@ -626,8 +628,10 @@
                         _cache[term] = data;
                         if (xhr === _lastXhr) {
                             var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
-                            response($.map(data, function(item) {
-                                if (matcher.test(item.Ten.toLowerCase()) || matcher.test(adm.normalizeStr(item.Ten.toLowerCase())) || matcher.test(item.Ma.toLowerCase()) || matcher.test(adm.normalizeStr(item.Email.toLowerCase())) || matcher.test(item.Mobile.toLowerCase()) || matcher.test(adm.normalizeStr(item.Phone.toLowerCase()))) {
+                            response($.map(data, function (item) {
+                                if (item.Email == 'null') item.Email = '';
+                                if (item.Phone == 'null') item.Phone = '';
+                                if (matcher.test(item.Ten.toLowerCase()) || matcher.test(adm.normalizeStr(item.Ten.toLowerCase())) || matcher.test(item.Ma.toLowerCase())  || matcher.test(item.Mobile.toLowerCase())) {
                                     return {
                                         label: item.Ten,
                                         value: item.Ten,

@@ -5,21 +5,21 @@
         <HeaderTemplate>
             <thead>
         <tr>
-            <td>
+            <th>
                 Mã
-            </td>
-            <td>
+            </th>
+            <th>
                 Khách hàng
-            </td>
-            <td>
+            </th>
+            <th>
                 Cộng
-            </td>
-            <td>
+            </th>
+            <th>
                 Thanh toán
-            </td>
-            <td>
+            </th>
+            <th>
                 Ngày
-            </td>
+            </th>
         </tr>    
     </thead>
         </HeaderTemplate>

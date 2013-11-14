@@ -109,11 +109,22 @@ namespace appStore.pmSpa.khachHangMgr.DanhSachKhachHang
                         {
                             item = KhachHangDal.SelectById(new Guid(ID));
                         }
+                        else
+                        {
+                            if(string.IsNullOrEmpty(Ma))
+                            {
+                                Ma = CaptchaImage.GenerateRandomCode(CaptchaType.Numeric, 10);
+                            }
+                        }
                         item.CMND = CMND;
                         item.DiaChi = DiaChi;
                         item.Email = Email;
                         item.GioiTinh = Convert.ToBoolean(GioiTinh);
-                        item.KhuVuc_ID = new Guid(KhuVuc_ID);
+                        if (!string.IsNullOrEmpty(KhuVuc_ID))
+                        {
+                            item.KhuVuc_ID = new Guid(KhuVuc_ID);
+                            
+                        }
                         item.Ma = Ma;
                         item.Mobile = Mobile;
                         item.NgayCapNhat = DateTime.Now;
@@ -123,7 +134,11 @@ namespace appStore.pmSpa.khachHangMgr.DanhSachKhachHang
                         }
                         item.NgungTheoDoi = Convert.ToBoolean(NgungTheoDoi);
                         item.NguoiCapNhat = Security.Username;
-                        item.NguonGoc_ID = new Guid(NguonGoc_ID);
+                        if (!string.IsNullOrEmpty(NguonGoc_ID))
+                        {
+                            item.NguonGoc_ID = new Guid(NguonGoc_ID);
+                            
+                        }
                         item.Phone = Phone;
                         item.Ten = Ten;
                         item.Ym = Ym;

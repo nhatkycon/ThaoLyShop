@@ -1956,6 +1956,8 @@ var adm = {
     , 'â': 'a', 'ầ': 'a', 'ấ': 'a', 'ũ': 'u', 'ụ': 'u', ' ủ': 'u', 'à': 'a', ' á': 'a', 'đ': 'd', 'ở': 'o'
     }
     , normalizeStr: function (term) {
+        if (term == null || term == 'null')
+            term = '';
         var ret = "";
         for (var i = 0; i < term.length; i++) {
             ret += adm.inorgeCaseMap[term.charAt(i)] || term.charAt(i);
